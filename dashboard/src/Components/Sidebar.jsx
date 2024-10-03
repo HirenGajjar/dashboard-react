@@ -9,7 +9,7 @@ import {
   Users,
 } from "lucide-react";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 //
 const sidebar_items = [
@@ -43,13 +43,26 @@ function Sidebar() {
           </motion.button>
 
           <nav className="mt-8 flex-grow ">
-            {sidebar_items.map((item, index) => (
+            {sidebar_items.map((item) => (
               <Link key={item.href} to={item.href}>
                 <motion.div className="flex  items-center p-4 font-medium text-sm rounded-lg hover:bg-gray-700 transition-colors mb-2">
                   <item.icon
                     size={20}
                     style={{ color: item.color, minWidth: "20px" }}
                   />
+                  <AnimatePresence>
+                    {isSidebarOpen && (
+                      <motion.span
+                        className="ml-4 whitespace-nowrap"
+                        initial={{ opacity: 0, width: 0 }}
+                        animate={{ opacity: 1, width: "auto" }}
+                        exit={{ opacity: 0, width: 0 }}
+                        transition={{ duration: 0.2, delay: 0.3 }}
+                      >
+                        {item.name}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               </Link>
             ))}
