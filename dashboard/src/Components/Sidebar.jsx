@@ -10,15 +10,16 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 //
 const sidebar_items = [
-  { name: "Overview", icon: BarChart2, color: "#6366f1", path: "/" },
-  { name: "Products", icon: ShoppingBag, color: "#8B5cf6", path: "/products" },
-  { name: "Users", icon: Users, color: "#ec4899", path: "/users" },
-  { name: "Sales", icon: DollarSign, color: "#10b981", path: "/sales" },
-  { name: "Orders", icon: ShoppingCart, color: "#f59e0b", path: "/orders" },
-  { name: "Analytics", icon: TrendingUp, color: "#3b82f6", path: "/analytics" },
-  { name: "Settings", icon: Settings, color: "#6ee7b7", path: "/settings" },
+  { name: "Overview", icon: BarChart2, color: "#6366f1", href: "/" },
+  { name: "Products", icon: ShoppingBag, color: "#8B5cf6", href: "/products" },
+  { name: "Users", icon: Users, color: "#ec4899", href: "/users" },
+  { name: "Sales", icon: DollarSign, color: "#10b981", href: "/sales" },
+  { name: "Orders", icon: ShoppingCart, color: "#f59e0b", href: "/orders" },
+  { name: "Analytics", icon: TrendingUp, color: "#3b82f6", href: "/analytics" },
+  { name: "Settings", icon: Settings, color: "#6ee7b7", href: "/settings" },
 ];
 
 function Sidebar() {
@@ -40,6 +41,19 @@ function Sidebar() {
           >
             <Menu size={24} />
           </motion.button>
+
+          <nav className="mt-8 flex-grow ">
+            {sidebar_items.map((item, index) => (
+              <Link key={item.href} to={item.href}>
+                <motion.div className="flex  items-center p-4 font-medium text-sm rounded-lg hover:bg-gray-700 transition-colors mb-2">
+                  <item.icon
+                    size={20}
+                    style={{ color: item.color, minWidth: "20px" }}
+                  />
+                </motion.div>
+              </Link>
+            ))}
+          </nav>
         </div>
       </motion.div>
     </>
