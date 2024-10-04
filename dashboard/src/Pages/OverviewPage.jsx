@@ -1,9 +1,12 @@
+import { motion } from "framer-motion";
+import { BarChart2, ShoppingBag, Users, Zap } from "lucide-react";
+//
 import React from "react";
 import Header from "../Components/Common/Header";
 import StatCard from "../Components/Common/StatCard";
-import { motion } from "framer-motion";
-import { BarChart2, ShoppingBag, Users, Zap } from "lucide-react";
 import SalesOverviewChart from "../Components/Overview/SalesOverviewChart";
+import CategoryDistributionChart from "../Components/Overview/CategoryDistributionChart";
+import SalesChannelChart from "../Components/Overview/SalesChannelChart";
 //
 const stat_data = [
   { name: "Total Sales", icon: Zap, value: "$100", color: "#6366f1" },
@@ -46,6 +49,8 @@ function OverviewPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <SalesOverviewChart />
+            <CategoryDistributionChart />
+            <SalesChannelChart />
           </div>
         </main>
       </div>
