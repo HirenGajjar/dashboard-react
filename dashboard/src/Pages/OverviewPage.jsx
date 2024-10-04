@@ -3,6 +3,8 @@ import Header from "../Components/Common/Header";
 import StatCard from "../Components/Common/StatCard";
 import { motion } from "framer-motion";
 import { BarChart2, ShoppingBag, Users, Zap } from "lucide-react";
+import SalesOverviewChart from "../Components/Overview/SalesOverviewChart";
+//
 const stat_data = [
   { name: "Total Sales", icon: Zap, value: "$100", color: "#6366f1" },
   { name: "New Users", icon: Users, value: "20", color: "#8b5cf6" },
@@ -41,6 +43,10 @@ function OverviewPage() {
               />
             ))}
           </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <SalesOverviewChart />
+          </div>
         </main>
       </div>
     </>
